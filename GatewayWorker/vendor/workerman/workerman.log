@@ -1,0 +1,78 @@
+2022-12-03 18:14:53 pid:80422 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-03 18:45:40 pid:80422 Workerman[start.php] stopping ...
+2022-12-03 18:45:40 pid:80422 Workerman[start.php] has been stopped
+2022-12-03 18:45:42 pid:81417 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-03 18:47:50 pid:81417 Workerman[start.php] stopping ...
+2022-12-03 18:47:50 pid:81417 Workerman[start.php] has been stopped
+2022-12-03 18:47:51 pid:81500 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-03 18:55:33 pid:81500 Workerman[start.php] stopping ...
+2022-12-03 18:55:33 pid:81500 Workerman[start.php] has been stopped
+2022-12-03 18:55:34 pid:81863 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-03 21:27:51 pid:5936 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-04 11:23:04 pid:5936 Workerman[start.php] stopping ...
+2022-12-04 11:23:04 pid:5936 Workerman[start.php] has been stopped
+2022-12-04 11:23:05 pid:15107 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-04 11:23:57 pid:15107 Workerman[start.php] stopping ...
+2022-12-04 11:23:57 pid:15107 Workerman[start.php] has been stopped
+2022-12-04 11:24:04 pid:15172 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-06 03:49:32 pid:15172 Workerman[start.php] stopping ...
+2022-12-06 03:49:52 pid:15172 Workerman[start.php] stopping ...
+2022-12-06 03:49:52 pid:15172 Workerman[start.php] has been stopped
+2022-12-09 03:33:13 pid:48225 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-09 06:03:20 pid:48225 Workerman[start.php] stopping ...
+2022-12-09 06:03:20 pid:48225 Workerman[start.php] has been stopped
+2022-12-09 06:03:21 pid:54267 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-10 01:49:00 pid:54267 Workerman[start.php] stopping ...
+2022-12-10 01:49:00 pid:54267 Workerman[start.php] has been stopped
+2022-12-10 01:49:01 pid:77901 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-10 04:47:51 pid:77901 Workerman[start.php] stopping ...
+2022-12-10 04:47:51 pid:77901 Workerman[start.php] has been stopped
+2022-12-10 04:47:54 pid:80981 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-10 06:17:34 pid:80981 Workerman[start.php] stopping ...
+2022-12-10 06:17:35 pid:80981 Workerman[start.php] has been stopped
+2022-12-10 06:17:36 pid:84445 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-10 13:37:02 pid:84445 Workerman[start.php] stopping ...
+2022-12-10 13:37:11 pid:84446 worker[84446] remains 4 connection(s)
+2022-12-10 13:37:11 pid:84446 worker[84446] remains 2 connection(s)
+2022-12-10 13:37:11 pid:84446 worker[84446] remains 0 connection(s)
+2022-12-10 13:37:11 pid:84453 worker[84453] remains 4 connection(s)
+2022-12-10 13:37:11 pid:84452 worker[84452] remains 4 connection(s)
+2022-12-10 13:37:11 pid:84451 worker[84451] remains 4 connection(s)
+2022-12-10 13:37:31 pid:84448 worker[84448] remains 4 connection(s)
+2022-12-10 13:37:31 pid:84448 worker[84448] remains 2 connection(s)
+2022-12-10 13:37:31 pid:84448 worker[84448] remains 0 connection(s)
+2022-12-10 13:37:31 pid:84450 worker[84450] remains 4 connection(s)
+2022-12-10 13:37:31 pid:84454 worker[84454] remains 6 connection(s)
+2022-12-10 13:37:57 pid:84449 worker[84449] remains 4 connection(s)
+2022-12-10 13:37:57 pid:84449 worker[84449] remains 2 connection(s)
+2022-12-10 13:37:57 pid:84449 worker[84449] remains 0 connection(s)
+2022-12-10 13:37:57 pid:84452 worker[84452] remains 2 connection(s)
+2022-12-10 13:37:57 pid:84453 worker[84453] remains 2 connection(s)
+2022-12-10 13:37:57 pid:84451 worker[84451] remains 2 connection(s)
+2022-12-10 13:38:11 pid:84447 worker[84447] remains 4 connection(s)
+2022-12-10 13:38:11 pid:84447 worker[84447] remains 2 connection(s)
+2022-12-10 13:38:11 pid:84447 worker[84447] remains 0 connection(s)
+2022-12-10 13:38:11 pid:84450 worker[84450] remains 2 connection(s)
+2022-12-10 13:38:32 pid:84450 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
+2022-12-10 13:38:32 pid:84450 SendBufferToWorker fail. The connections between Gateway and BusinessWorker are not ready. See http://doc2.workerman.net/send-buffer-to-worker-fail.html
+2022-12-11 04:08:22 pid:2191 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 04:20:32 pid:2191 Workerman[start.php] stopping ...
+2022-12-11 04:20:32 pid:2191 Workerman[start.php] has been stopped
+2022-12-11 04:20:34 pid:2733 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 05:28:14 pid:2733 Workerman[start.php] stopping ...
+2022-12-11 05:28:14 pid:2733 Workerman[start.php] has been stopped
+2022-12-11 05:28:14 pid:5807 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 05:29:27 pid:5807 Workerman[start.php] stopping ...
+2022-12-11 05:29:27 pid:5807 Workerman[start.php] has been stopped
+2022-12-11 05:29:28 pid:5859 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 06:20:51 pid:5859 Workerman[start.php] stopping ...
+2022-12-11 06:20:51 pid:5859 Workerman[start.php] has been stopped
+2022-12-11 06:52:07 pid:8934 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 07:54:48 pid:8934 Workerman[start.php] stopping ...
+2022-12-11 07:54:48 pid:8934 Workerman[start.php] has been stopped
+2022-12-11 07:56:01 pid:11906 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 07:56:53 pid:11906 Workerman[start.php] stopping ...
+2022-12-11 07:56:53 pid:11906 Workerman[start.php] has been stopped
+2022-12-11 07:57:02 pid:11981 Workerman[GatewayWorker/start.php] start in DEBUG mode
+2022-12-11 08:40:00 pid:11981 Workerman[start.php] stopping ...
+2022-12-11 08:40:00 pid:11981 Workerman[start.php] has been stopped
