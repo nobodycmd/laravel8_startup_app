@@ -277,7 +277,7 @@ EOF;
 
 
                                 $s =<<<EOF
-<form method="post" name="f">
+<form method="post" name="f" autocomplete="off">
 @csrf
      <table class="table">
             <colgroup>
@@ -294,8 +294,21 @@ EOF;
 
                                     $s = "<td>".($one->Comment ? $one->Comment : $one->Field)."</td>";
                                     echo htmlentities($s) . PHP_EOL;
-
-                                    $s = '<td><input name="'.$fieldName.'"  autocomplete="false"  value="{{$model->'.$fieldName.'}}"  class="form-control"  /></td>';
+                                    if($inputAll[$fieldName] == 'text'){
+                                        $s = '<td><input name="'.$fieldName.'"  autocomplete="false"  value="{{$model->'.$fieldName.'}}"  class="form-control"  /></td>';
+                                    }
+                                    if($inputAll[$fieldName] == 'date'){
+                                        $s = '<td><input name="'.$fieldName.'"  autocomplete="false"  value="{{$model->'.$fieldName.'}}"  class="form-control"  /></td>';
+                                    }
+                                    if($inputAll[$fieldName] == 'datetime'){
+                                        $s = '<td><input name="'.$fieldName.'"  autocomplete="false"  value="{{$model->'.$fieldName.'}}"  class="form-control"  /></td>';
+                                    }
+                                    if($inputAll[$fieldName] == 'file'){
+                                        $s = '<td><input name="'.$fieldName.'" id="'.$fieldName.'upload_url" type="hidden"   value="{{$model->'.$fieldName.'}}"   /><a type="button" class="btn btn-success" id="'.$fieldName.'upload"></td>';
+                                    }
+                                    if($inputAll[$fieldName] == 'dropdown'){
+                                        $s = '<td><select name="'.$fieldName.'"  id="'.$fieldName.'"  autocomplete="false"  value="{{$model->'.$fieldName.'}}"  class="form-control"></select></td>';
+                                    }
                                     echo htmlentities($s) . PHP_EOL;
 
                                     echo  htmlentities("</tr>") . PHP_EOL;
@@ -330,5 +343,62 @@ EOF;
 @endsection
 
 @section('script')
+
+<?php
+    foreach ($inputAll as $column => $value){
+        if($value == 'file'){
+            ?>
+$("#<?= $column ?>upload").uploadFile({
+    url:"{{route('admin.common.webFileUpload')}}",
+    fileName:"file",
+    maxFileCount:1,
+    dragDrop:true,
+    returnType: "json",
+    statusBarWidth:600,
+    dragdropWidth:600,
+    maxFileSize:15000*1024,
+    showPreview:true,
+    previewHeight: "100px",
+    previewWidth: "100px",
+    onSuccess:function(files,res,xhr,pd)
+    {
+        console.log((res))
+        $('#<?= $column ?>upload_url').val(res.data.url)
+    },
+})
+
+<?php
+        }
+
+if($value == 'date'){
+?>
+layui.laydate.render({
+    elem: '#<?= $column ?>',
+    type: 'date',
+    // range: '~',
+    trigger: 'click',
+    ready:function (){
+        document.activeElement.blur();
+    },
+});
+    <?php
+    }
+
+    if($value == 'datetime'){
+    ?>
+    layui.laydate.render({
+        elem: '#<?= $column ?>',
+        type: 'datetime',
+        // range: '~',
+        trigger: 'click',
+        ready:function (){
+            document.activeElement.blur();
+        },
+    });
+    <?php
+    }
+
+    }
+    ?>
 
 @endsection

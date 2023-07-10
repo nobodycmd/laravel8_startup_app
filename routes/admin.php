@@ -112,9 +112,9 @@ Route::prefix('admin')->name('admin.')->middleware([
             'admin.auth'
         ])->group(function () {
             Route::get('index', [DevToolController::class, 'index'])->name('index');
-            Route::get('tables', [DevToolController::class, 'tables'])->name('tables');
-            Route::get('rows', [DevToolController::class, 'rows'])->name('rows');
-            Route::get('codes', [DevToolController::class, 'codes'])->name('codes');
+            Route::match(['get', 'post'], 'tables', [DevToolController::class, 'tables'])->name('tables');
+            Route::match(['get', 'post'], 'rows', [DevToolController::class, 'rows'])->name('rows');
+            Route::match(['get', 'post'], 'codes', [DevToolController::class, 'codes'])->name('codes');
             Route::get('phpinfo', [DevToolController::class, 'phpinfo'])->name('phpinfo');
             Route::get('probe', [DevToolController::class, 'probe'])->name('probe');
         });

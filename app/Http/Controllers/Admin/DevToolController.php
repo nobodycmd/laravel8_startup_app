@@ -58,11 +58,15 @@ class DevToolController extends Controller
 
     public function codes()
     {
-        $table     = request()->input('table');
+        $table = request()->input('table');
         $aryColumn = DB::select("SHOW FULL columns from $table");
         $className = ucfirst(Str::camel($table));
 
-        return view('admin.devtool.codes', compact('table', 'className', 'aryColumn'));
+        if (request()->isMethod('get')) {
+            return view('admin.devtool.columns', compact('table', 'className', 'aryColumn'));
+        }
+        $inputAll = request()->input();
+        return view('admin.devtool.codes', compact('table', 'className', 'aryColumn', 'inputAll'));
     }
 
     public function phpinfo()
