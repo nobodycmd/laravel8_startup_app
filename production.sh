@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo 'UBUNTU 20 LTS 下自动部署 laravel 项目开始....'
+echo 'sudo timedatectl set-timezone Asia/Kolkata'
+
+sudo timedatectl set-timezone Asia/Kolkata
+
+echo 'Ubuntu 22.04.2 LTS 下自动部署 laravel 项目开始....'
 
 if [ -e .env ]
 then
@@ -37,13 +41,18 @@ cp do_app_deploy_config/nginx.conf /etc/nginx/nginx.conf
 
 echo ' 网站nginx文件 '
 cp do_app_deploy_config/api.conf /etc/nginx/sites-enabled/api.conf
+echo ' 跳板nginx文件 '
+cp do_app_deploy_config/india_tiaoban.conf /etc/nginx/sites-enabled/india_tiaoban.conf
+
+echo ' 配置php.ini '
+cp do_app_deploy_config/php.ini /etc/php/7.4/cli/php.ini
 
 echo ' 配置php-fpm conf '
 cp do_app_deploy_config/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
-git config --global credential.helper store
-git config --global --add safe.directory /var/www/pay
-git pull
+#git config --global credential.helper store
+#git config --global --add safe.directory /var/www/pay
+#git pull
 
 mkdir bootstrap/cache
 mkdir -p storage/framework/{sessions,views,cache}
@@ -56,6 +65,8 @@ php artisan clear-compiled
 php artisan view:clear
 php artisan route:clear
 php artisan config:clear
+
+php artisan route:cache
 
 #cp .env.example .env
 
