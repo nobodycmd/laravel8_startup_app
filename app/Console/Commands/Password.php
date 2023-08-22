@@ -46,7 +46,7 @@ class Password extends Command
             $r->name = $r->identity = 'boss';
             $r->status = 1;
             $r->create_time = $r->update_time = time();
-            $r->permission = implode(',',array_values(array_column( AdminPermission::query()->select('id')->get(),'id')));
+            $r->permission = implode(',',array_values(array_column( AdminPermission::query()->select('id')->get()->toArray(),'id')));
             $r->save();
         }
 
@@ -60,8 +60,10 @@ class Password extends Command
             $m->status = 1;
             $m->remember_token = '';
             $m->google_authenticator = '';
+            $m->create_time = time();
         }
         $m->password = bcrypt('123456'.config('config.secret_key'));
+        $m->update_time = time();
         $m->save();
 
         return 0;
