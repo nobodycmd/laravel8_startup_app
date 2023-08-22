@@ -43,13 +43,13 @@ class Password extends Command
         $r = AdminRole::query()->first();
         if($r == false){
             $r = new AdminRole();
-            $r->id = 1;
-            $r->name = $r->identity = 'boss';
-            $r->status = 1;
-            $r->create_time = $r->update_time = time();
-            $r->permission = implode('|',array_values(array_column( AdminPermission::query()->select('id')->get()->toArray(),'id')));
-            $r->save();
         }
+        $r->id = 1;
+        $r->name = $r->identity = 'boss';
+        $r->status = 1;
+        $r->create_time = $r->update_time = time();
+        $r->permission = implode('|',array_values(array_column( AdminPermission::query()->select('id')->get()->toArray(),'id')));
+        $r->save();
 
         $m           = \App\Models\Admin::query()->first();
         if($m == false){
