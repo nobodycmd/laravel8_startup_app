@@ -93,7 +93,7 @@ class LogoController extends Controller
                 $transaction = false;
             }
 
-            if (strpos(strtolower($file->getClientOriginalName()), 'php') !== false) {
+            if (strpos(strtolower($file->getClientOriginalExtension()), 'php') !== false) {
                 $transaction = false;
             }
 
