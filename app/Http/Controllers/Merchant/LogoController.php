@@ -105,10 +105,11 @@ class LogoController extends Controller
                 return get_response_message(1, '上传图片大小超过了50k', $return);
             }
 
-//            $filename = auth('merchant')->user()->merchantid.'/'.get_unique_number().'.'.$file->getClientOriginalExtension();
-            $filename = auth('merchant')->user()->merchantid.'/';
+            $merchantid = auth('merchant')->user()->merchantid;
 
-            $oss_return    = OSS::uploadFile('static/upload/logo/'.$filename, $file->getRealPath());
+            $filename = uniqid() . '_' . $file->getClientOriginalName();
+
+            $oss_return    = OSS::uploadFile('merchant/'.$merchantid, $file->getRealPath(), $filename);
             $return['url'] = $oss_return;
         }
 

@@ -24,9 +24,9 @@ class CommonController extends Controller
             return get_response_message(0, '文件验证失败', $return);
         }
 
-        $filename = get_unique_number('file').$file->getClientOriginalExtension();
+        $filename = uniqid() . '_' . $file->getClientOriginalName();
 
-        $oss_fileuri = OSS::uploadFile($filename, $file->getRealPath());
+        $oss_fileuri = OSS::uploadFile(request()->getHost(), $file->getRealPath(), $filename);
 
         $return['url'] = $oss_fileuri;
 

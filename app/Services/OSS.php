@@ -6,10 +6,18 @@ use Illuminate\Support\Facades\Storage;
 
 class OSS
 {
-    public static function uploadFile($ossPath, $filePath, $options = 'public')
+    /**
+     * @param $ossDirPath
+     * @param $localFilePath
+     * @param $name
+     * @param string $options
+     * @return string
+     */
+    public static function uploadFile($ossDirPath, $localFilePath, $name, $options = 'public')
     {
-        $doPath = Storage::disk('digitalocean')->putFile($ossPath, $filePath, $options);
+        $doPath = Storage::disk('digitalocean')->putFileAs($ossDirPath, $localFilePath, $name, $options);
 
-        return 'https://dos3.sgp1.cdn.digitaloceanspaces.com/'.$doPath;
+        return env('SPACES_URL','https://dos3.sgp1.cdn.digitaloceanspaces.com') . '/' . $doPath;
+//        return 'https://dos3.sgp1.cdn.digitaloceanspaces.com/'.$doPath;
     }
 }
