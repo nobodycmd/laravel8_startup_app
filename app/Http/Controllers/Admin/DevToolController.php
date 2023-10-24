@@ -4,12 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Services\SystemInfo;
+use App\Services\DBBackAndRestoreService;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class DevToolController extends Controller
 {
+    private $dbBackupAndStoreService;
+
+    public function __construct(DBBackAndRestoreService $DBBackAndRestoreService)
+    {
+        $this->dbBackupAndStoreService = $DBBackAndRestoreService;
+    }
+
     public function index()
     {
         return view('admin.devtool.index');
@@ -17,9 +25,36 @@ class DevToolController extends Controller
 
     public function tables()
     {
-        $aryList = DB::select('SHOW TABLE STATUS');
+        if (request()->isMethod('get')) {
+            $aryList = DB::select('SHOW TABLE STATUS');
 
-        return view('admin.devtool.tables', compact('aryList'));
+            return view('admin.devtool.tables', compact('aryList'));
+        }
+        $aryNames = request()->input('names', '');
+        if ($aryNames == false) {
+            return apiRenderError('no checked');
+        }
+        $this->dbBackupAndStoreService->setCtrlRes($aryNames);
+        $this->dbBackupAndStoreService->runBak();
+
+        return 'have backed up for tables of '.implode(' , ', $aryNames);
+    }
+
+    public function restore()
+    {
+        if (request()->isMethod('get')) {
+            $aryList = $this->dbBackupAndStoreService->getList();
+
+            return view('admin.devtool.restore', compact('aryList'));
+        }
+        $aryNames = request()->input('names', '');
+        if ($aryNames == false) {
+            return apiRenderError('no checked');
+        }
+        $this->dbBackupAndStoreService->setCtrlRes($aryNames);
+        $this->dbBackupAndStoreService->runRes();
+
+        return 'have restored for '.implode(',', $aryNames);
     }
 
     public function rows()
@@ -68,49 +103,5 @@ class DevToolController extends Controller
         $inputAll = request()->input();
 
         return view('admin.devtool.codes', compact('table', 'className', 'aryColumn', 'inputAll'));
-    }
-
-    public function phpinfo()
-    {
-        return view('admin.devtool.phpinfo');
-    }
-
-    public function probe()
-    {
-        $info = $this->getProbeInfo();
-
-        return view('admin.devtool.probe', compact('info'));
-    }
-
-    private function getProbeInfo()
-    {
-        $info       = new SystemInfo();
-        $systemInfo = [
-            'environment' => $info->getEnvironment(),
-            'hardDisk'    => $info->getHardDisk(),
-            'cpu'         => $info->getCpu(),
-            'cpuUse'      => $info->getCpuUse(),
-            'netWork'     => $info->getNetwork(),
-            'memory'      => $info->getMemory(),
-            'loadavg'     => $info->getLoadavg(),
-            'uptime'      => $info->getUptime(),
-            'time'        => time(),
-        ];
-
-        empty($systemInfo['cpuUse']['explain']) && $systemInfo['cpuUse']['explain'] = '正在计算...';
-
-        // 网络数字转格式
-        $systemInfo['netWork']['allOutSpeed']   = round($systemInfo['netWork']['allOutSpeed'] / (1024 * 1024 * 1024), 2);
-        $systemInfo['netWork']['allInputSpeed'] = round($systemInfo['netWork']['allInputSpeed'] / (1024 * 1024 * 1024), 2);
-
-        $num     = 3;
-        $num_arr = [];
-        for ($i = 20; $i >= 1; $i--) {
-            $num_arr[] = date('H:i:s', time() - $i * $num);
-        }
-
-        $systemInfo['chartTime'] = $num_arr;
-
-        return $systemInfo;
     }
 }
